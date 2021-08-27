@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian
+FROM balenalib/raspberrypi4-64
 MAINTAINER Tobias Schoch <tobias.schoch@vtxmail.ch>
 
 
