@@ -11,7 +11,7 @@ import os
 log = logging.getLogger(__name__)
 
 def vcgencmd(*args):
-    return subprocess.check_output(('vcgencmd',)+args)
+    return subprocess.check_output(('/opt/vc/bin/vcgencmd',)+args).decode('utf-8')
 
 def camera():
     txt = vcgencmd('get_camera')
@@ -39,7 +39,7 @@ def config():
     data = dict(info.strip('\n').split('=') for info in txt.rstrip('\n').split('\n'))
     return {k:int(v.strip(), 0) for k, v in data.items()}
 
-def ipadress():
+def ipaddress():
     with open(os.devnull, 'w') as devnull:
         ip = subprocess.check_output(['curl','https://api.ipify.org'], stderr=devnull)
     return ip
